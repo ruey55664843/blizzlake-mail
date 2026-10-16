@@ -8,7 +8,8 @@
 <h2>What the app does</h2>
 <p>taroball-assistant is a private tool used only by its owner, on the owner's own computer. It (1) sends report emails
 from the owner's bot Gmail account to the owner, and (2) sorts the owner's personal Gmail inbox: it applies labels,
-archives advertising and scam email, and saves travel booking confirmations to the owner's Google Drive.</p>
+archives advertising and scam email, and saves booking confirmations to the owner's Google Drive, and (3) helps
+the owner reorganize their own Google Drive into a tidier folder structure.</p>
 <h2>Google user data</h2>
 <ul>
 <li><b><code>gmail.send</code></b> (bot account only): to send report emails.</li>
@@ -16,11 +17,18 @@ archives advertising and scam email, and saves travel booking confirmations to t
 classify them, and to add labels and archive. The app never sends, forwards, trashes or deletes email from this account.</li>
 <li><b><code>drive.file</code></b>: to create files (booking confirmations) in the owner's Drive. The app can see only the
 files it created itself, not any other Drive content.</li>
+<li><b><code>drive.metadata.readonly</code></b> (owner's personal account): to list the names, folders, types, sizes,
+dates and sharing status of the owner's Drive files, in order to propose a tidier folder structure. File contents are
+not read.</li>
+<li><b><code>drive</code></b> (requested separately, only after the owner approves a proposed move plan): to move the
+owner's files into the approved folders. The app never deletes, trashes, or changes the sharing of any file, and logs
+every move so it can be undone.</li>
 <li><b>AI classification:</b> for each new message, the sender, subject, authentication results and up to the first 2 KB
 of its text are sent to Anthropic's Claude, under the owner's own Claude account, solely to decide which label applies.
-Attachments are never sent. Anthropic's handling of that data is governed by Anthropic's privacy policy.</li>
+Attachments are never sent. For Drive organizing, file and folder names and paths (never file contents) are sent
+the same way to suggest where each file belongs. Anthropic's handling of that data is governed by Anthropic's privacy policy.</li>
 <li><b>Storage:</b> OAuth refresh tokens are kept only in the owner's local macOS Keychain. A local log of classification
-decisions (sender, subject, label, reason) stays on the owner's computer. No data is stored on any server run by this app.</li>
+decisions (sender, subject, label, reason) and a local index of Drive file metadata stay on the owner's computer. No data is stored on any server run by this app.</li>
 <li><b>Sharing:</b> apart from the AI classification step above, no Google user data is shared with, sold to, or
 transferred to any third party. Google user data is not used to train AI models.</li>
 </ul>
