@@ -1,18 +1,28 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>blizzlake-mail — Privacy policy</title>
+<title>taroball-assistant — Privacy policy</title>
 <style>body{font-family:-apple-system,"PingFang TC",sans-serif;max-width:680px;margin:40px auto;padding:0 16px;line-height:1.6;color:#1f2328}</style>
 </head><body>
-<h1>Privacy policy — blizzlake-mail</h1>
+<h1>Privacy policy — taroball-assistant</h1>
 <p>Last updated: 2026-10-16</p>
 <h2>What the app does</h2>
-<p>blizzlake-mail is a private tool used only by its owner. It sends report emails from the owner's Gmail account to the owner.</p>
+<p>taroball-assistant is a private tool used only by its owner, on the owner's own computer. It (1) sends report emails
+from the owner's bot Gmail account to the owner, and (2) sorts the owner's personal Gmail inbox: it applies labels,
+archives advertising and scam email, and saves travel booking confirmations to the owner's Google Drive.</p>
 <h2>Google user data</h2>
 <ul>
-<li><b>Permission requested:</b> <code>https://www.googleapis.com/auth/gmail.send</code> only — to send email on the owner's behalf.</li>
-<li><b>Not accessed:</b> the app does not read, search, store, modify, or delete any email, contacts, or other Google data.</li>
-<li><b>Storage:</b> the OAuth refresh token is kept only in the owner's local macOS Keychain. No data is stored on any server.</li>
-<li><b>Sharing:</b> no Google user data is shared with, sold to, or transferred to any third party.</li>
+<li><b><code>gmail.send</code></b> (bot account only): to send report emails.</li>
+<li><b><code>gmail.modify</code></b> (owner's personal account): to read incoming messages' headers and text in order to
+classify them, and to add labels and archive. The app never sends, forwards, trashes or deletes email from this account.</li>
+<li><b><code>drive.file</code></b>: to create files (booking confirmations) in the owner's Drive. The app can see only the
+files it created itself, not any other Drive content.</li>
+<li><b>AI classification:</b> for each new message, the sender, subject, authentication results and up to the first 2 KB
+of its text are sent to Anthropic's Claude, under the owner's own Claude account, solely to decide which label applies.
+Attachments are never sent. Anthropic's handling of that data is governed by Anthropic's privacy policy.</li>
+<li><b>Storage:</b> OAuth refresh tokens are kept only in the owner's local macOS Keychain. A local log of classification
+decisions (sender, subject, label, reason) stays on the owner's computer. No data is stored on any server run by this app.</li>
+<li><b>Sharing:</b> apart from the AI classification step above, no Google user data is shared with, sold to, or
+transferred to any third party. Google user data is not used to train AI models.</li>
 </ul>
 <p>The app's use of information received from Google APIs adheres to the
 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
